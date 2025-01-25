@@ -1,5 +1,5 @@
 import React from "react";
-import { messages1 } from "../../../assets/exports";
+import { messages1 } from "../../../../assets/exports";
 
 const NavMessage = () => {
   return (

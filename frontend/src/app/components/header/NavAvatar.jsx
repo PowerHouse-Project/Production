@@ -1,5 +1,4 @@
-import React from "react";
-import { profileImg } from "../../../assets/exports";
+import { profileImg } from "../../../../assets/exports";
 
 const NavAvatar = () => {
   return (
