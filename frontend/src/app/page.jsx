@@ -1,5 +1,5 @@
 "use client";
-import Header from "./header/Header";
+import Header from "./components/header/nav/Header";
 
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";

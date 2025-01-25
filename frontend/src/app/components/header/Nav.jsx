@@ -1,6 +1,6 @@
 import NavAvatar from "./NavAvatar";
 import NavMessage from "./NavMessage";
-import NavNotice from "./NavNotice";
+import NavNotice from "../header/Nav/NavNotice";
 
 const Nav = () => {
   return (
