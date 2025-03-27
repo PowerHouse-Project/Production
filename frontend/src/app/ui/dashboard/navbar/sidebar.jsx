@@ -12,12 +12,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Link from "next/link";
+import { Tooltip } from "@mui/material";
 
 import HomeIcon from "@mui/icons-material/Home";
 import DevicesIcon from "@mui/icons-material/Devices";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import BatteryChargingFullIcon from "@mui/icons-material/BatteryChargingFull";
-import GroupIcon from "@mui/icons-material/Group";
+import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 
 import { useAppStore } from "@/app/appStore";
 
@@ -44,7 +45,7 @@ const menuItems = [
   },
   {
     name: "Groups",
-    icon: GroupIcon,
+    icon: DynamicFeedIcon,
     link: "/groups",
   },
 ];
@@ -128,50 +129,77 @@ export default function Sidebar() {
             <Link key={link} href={link} passHref legacyBehavior>
               <ListItem
                 disablePadding
-                onClick={handleCloseDrawer} // Close drawer on click
+                onClick={handleCloseDrawer}
                 className="ease-linear transition-all duration-300 md:px-1"
               >
-                <ListItemButton
-                  className={`group transition-all duration-300 hover:bg-opacity-20 ${
-                    isDarkMode
-                      ? "hover:bg-main-light-blue-dark"
-                      : "hover:bg-main-dark-purple-light"
-                  }`}
+                <Tooltip
+                  title={Name}
+                  arrow
+                  placement="right"
+                  PopperProps={{
+                    modifiers: [
+                      {
+                        name: "preventOverflow",
+                        options: {
+                          boundary: "window",
+                        },
+                      },
+                    ],
+                  }}
+                  componentsProps={{
+                    tooltip: {
+                      sx: {
+                        fontSize: "1rem", // Bigger font size
+                        padding: "6px 12px",
+                        fontFamily: "JetBrains Mono",
+                      },
+                    },
+                  }}
                 >
-                  <ListItemIcon
-                    className={`transition-all duration-300 ${
+                  <ListItemButton
+                    className={`group transition-all duration-300 hover:bg-opacity-20 ${
                       isDarkMode
-                        ? "text-main-dark-purple-light group-hover:text-main-dark-purple-light"
-                        : "text-main-dark-blue-inactive group-hover:text-main-light-blue-dark"
+                        ? "hover:bg-main-light-blue-dark"
+                        : "hover:bg-main-dark-purple-light"
                     }`}
                   >
-                    <Icon
+                    <ListItemIcon
                       className={`transition-all duration-300 ${
                         isDarkMode
-                          ? "group-hover:text-main-dark-purple-light"
-                          : "group-hover:text-main-light-blue-dark"
+                          ? "text-main-dark-purple-light group-hover:text-main-dark-purple-light"
+                          : "text-main-dark-blue-inactive group-hover:text-main-light-blue-dark"
                       }`}
-                    />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={
-                      <span
-                        style={{
-                          fontFamily: "JetBrains Mono",
-                          fontWeight: 700,
-                          fontSize: 14,
-                        }}
+                    >
+                      <Icon
                         className={`transition-all duration-300 ${
                           isDarkMode
                             ? "group-hover:text-main-dark-purple-light"
                             : "group-hover:text-main-light-blue-dark"
                         }`}
-                      >
-                        {Name}
-                      </span>
-                    }
-                  />
-                </ListItemButton>
+                      />
+                    </ListItemIcon>
+                    {open && (
+                      <ListItemText
+                        primary={
+                          <span
+                            style={{
+                              fontFamily: "JetBrains Mono",
+                              fontWeight: 700,
+                              fontSize: 14,
+                            }}
+                            className={`transition-all duration-300 ${
+                              isDarkMode
+                                ? "group-hover:text-main-dark-purple-light"
+                                : "group-hover:text-main-light-blue-dark"
+                            }`}
+                          >
+                            {Name}
+                          </span>
+                        }
+                      />
+                    )}
+                  </ListItemButton>
+                </Tooltip>
               </ListItem>
             </Link>
           ))}

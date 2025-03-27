@@ -139,7 +139,7 @@ const Automations = () => {
       return;
     }
 
-    const isEditing = editingAutomation !== null; // Check if editing
+    const isEditing = editingAutomation !== null;
 
     const apiUrl = isEditing
       ? `http://localhost:8000/automations/edit_automation/${
@@ -275,7 +275,7 @@ const Automations = () => {
 
   return (
     <div>
-      <Breadcrumb />
+      {/* <Breadcrumb /> */}
       <Box sx={{ paddingTop: 2 }}>
         <Box
           sx={{

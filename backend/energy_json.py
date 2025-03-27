@@ -2,7 +2,7 @@ import json
 import os
 
 ENERGY_FOLDER = os.path.join(os.path.dirname(__file__), "energy")
-print(ENERGY_FOLDER)
+# print(ENERGY_FOLDER)
 
 def get_energy_data(time_range: str):
     """Fetch energy usage data from JSON files."""
@@ -19,10 +19,6 @@ def get_energy_data(time_range: str):
         return {"error": f"{time_range}_energy.json not found."}
     except json.JSONDecodeError:
         return {"error": f"Invalid JSON format in {time_range}_energy.json."}
-
-def get_energy_data_pdf(time_range: str):
-    """Fetch energy usage data from JSON files and convert to PDF."""
-    return # To be implemented
 
 
 def set_energy_goal(goal_value: float):

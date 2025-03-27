@@ -7,12 +7,17 @@ AUTOMATION_FILE = "automations.json"
 
 def loadAutomations():
     """Load automation rules from JSON and ensure correct types."""
-    with open(AUTOMATION_FILE, "r") as file:
-        data = json.load(file)
-        for automation in data.get("automations", []):
-            automation["device_id"] = int(automation["device_id"])
-        return data
-    return {"automations": []}
+    try:
+        with open(AUTOMATION_FILE, "r") as file:
+            data = json.load(file)
+            if "automations" not in data:
+                return {"automations": []}
+
+            for automation in data["automations"]:
+                automation["device_id"] = int(automation["device_id"])
+            return data
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"automations": []}
     
 def updateAutomationStatus(automation_id, status):
     """Update the 'enabled' status of an automation by ID."""

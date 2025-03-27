@@ -20,6 +20,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import UpdateIcon from "@mui/icons-material/Update";
 import WarningIcon from "@mui/icons-material/Warning";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import InfoIcon from "@mui/icons-material/Info";
 
 import { useAppStore } from "@/app/appStore";
 import { useThemeMode } from "@/app/themeRegistery";
@@ -38,6 +39,15 @@ export default function Navbar() {
   const { toggleTheme } = useThemeMode();
 
   const isNotificationMenuOpen = Boolean(notificationAnchorEl);
+
+  const handleDownloadPDF = () => {
+    const link = document.createElement("a");
+    link.href = "/User Manual.pdf";
+    link.download = "User Manual.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const fetchLatestUpdates = async () => {
     try {
@@ -102,6 +112,13 @@ export default function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: "flex" }}>
+            <IconButton
+              size="large"
+              color="inherit"
+              onClick={handleDownloadPDF}
+            >
+              <InfoIcon />
+            </IconButton>
             <IconButton size="large" color="inherit">
               <LightModeIcon onClick={toggleTheme} />
             </IconButton>
@@ -110,6 +127,7 @@ export default function Navbar() {
               aria-label="show notifications"
               color="inherit"
               onClick={handleNotificationsOpen}
+              sx={{ display: { xs: "none", sm: "block" } }}
             >
               <Badge
                 badgeContent={updates.length > 0 ? updates.length : 0}

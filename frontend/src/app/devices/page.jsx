@@ -268,7 +268,7 @@ const Devices = () => {
 
   return (
     <div>
-      <Breadcrumb />
+      {/* <Breadcrumb /> */}
       <Box sx={{ paddingTop: 2 }}>
         <Box
           sx={{

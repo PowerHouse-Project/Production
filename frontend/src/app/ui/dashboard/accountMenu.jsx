@@ -18,6 +18,8 @@ import AllocateDevicesDialog from "../allocateDevices";
 import UserSettingsDialog from "../userSettingsDialogue";
 import SetEnergyGoalDialog from "../setEnergyGoalDialogue";
 
+import LoopIcon from "@mui/icons-material/Loop";
+
 import { signOut } from "firebase/auth";
 import { auth } from "@/app/firebase/config";
 
@@ -138,12 +140,26 @@ export default function AccountMenu() {
             fontFamily: "JetBrains Mono",
             fontWeight: 800,
             color: "primary.main",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
-          <Avatar sx={{ fontFamily: "Jetbrains Mono" }}>
-            {selectedUser.charAt(0)}
-          </Avatar>{" "}
-          {selectedUser}
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Avatar sx={{ fontFamily: "JetBrains Mono", mr: 1 }}>
+              {selectedUser.charAt(0)}
+            </Avatar>{" "}
+            {selectedUser}
+          </Box>
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              router.push("/users");
+            }}
+            sx={{ color: "primary.main" }}
+          >
+            <LoopIcon />
+          </IconButton>
         </MenuItem>
         <Divider />
         {isSuperUser && (

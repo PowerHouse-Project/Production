@@ -150,7 +150,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Breadcrumb />
+      {/* <Breadcrumb /> */}
       <Box height={30} />
       <Grid container spacing={2}>
         <Grid item xs={12} md={12}>
@@ -369,7 +369,11 @@ const Dashboard = () => {
                 timeRange={timeRange}
               />
               <ButtonGroup
-                sx={{ marginTop: "auto", alignSelf: "center" }}
+                sx={{
+                  marginTop: "auto",
+                  alignSelf: "center",
+                  gap: 1,
+                }}
                 color="primary"
               >
                 <Button
@@ -378,6 +382,10 @@ const Dashboard = () => {
                   sx={{
                     fontFamily: "JetBrains Mono",
                     fontWeight: 800,
+                    fontSize: "1.1rem",
+                    padding: "12px 24px",
+                    minWidth: "120px",
+                    height: "50px",
                     color: timeRange === "realtime" ? "white" : "primary.main",
                   }}
                 >
@@ -389,6 +397,10 @@ const Dashboard = () => {
                   sx={{
                     fontFamily: "JetBrains Mono",
                     fontWeight: 800,
+                    fontSize: "1.1rem",
+                    padding: "12px 24px",
+                    minWidth: "120px",
+                    height: "50px",
                     color: timeRange === "daily" ? "white" : "primary.main",
                   }}
                 >
@@ -400,6 +412,10 @@ const Dashboard = () => {
                   sx={{
                     fontFamily: "JetBrains Mono",
                     fontWeight: 800,
+                    fontSize: "1.1rem",
+                    padding: "12px 24px",
+                    minWidth: "120px",
+                    height: "50px",
                     color: timeRange === "monthly" ? "white" : "primary.main",
                   }}
                 >

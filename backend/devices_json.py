@@ -32,7 +32,7 @@ def loadJSON():
             # print("DEBUG: Selected user not found!")
             return {"smart_home_devices": []}
 
-        allocated_device_ids = set(map(str, selected_user.get("allocated_devices", [])))  # Ensure string conversion
+        allocated_device_ids = set(map(str, selected_user.get("allocated_devices", [])))
 
         # print(f"DEBUG: Allocated devices for {selected_user_name}: {allocated_device_ids}")
 

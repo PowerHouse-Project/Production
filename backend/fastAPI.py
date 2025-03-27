@@ -190,10 +190,6 @@ def fetch_energy_usage(range: str):
 def fetch_energy_usage(time_range: str):
     return ej.get_energy_data(time_range)
 
-@app.get("/energy_usage/{time_range}/pdf")
-def fetch_energy_usage_pdf(time_range: str):
-    return ej.get_energy_data_pdf(time_range)
-
 @app.get("/energy_goal")
 def read_energy_goal():
     """Endpoint to read/fetch the current energy goal"""

@@ -54,11 +54,26 @@ const Keypad = ({ onKeyPress, onClear }) => {
     onKeyPress(value);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key >= "0" && event.key <= "9") {
+        onKeyPress(event.key);
+      } else if (event.key === "Backspace") {
+        onClear();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onKeyPress, onClear]);
+
   return (
     <Box
       sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1 }}
     >
-      {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
         <Button
           key={num}
           variant="outlined"
@@ -68,27 +83,6 @@ const Keypad = ({ onKeyPress, onClear }) => {
           {num}
         </Button>
       ))}
-      <Button
-        variant="outlined"
-        onClick={() => handleButtonClick("8")}
-        sx={{ fontSize: "1.5rem", height: 50 }}
-      >
-        8
-      </Button>
-      <Button
-        variant="outlined"
-        onClick={() => handleButtonClick("9")}
-        sx={{ fontSize: "1.5rem", height: 50 }}
-      >
-        9
-      </Button>
-      <Button
-        variant="outlined"
-        onClick={() => handleButtonClick("0")}
-        sx={{ fontSize: "1.5rem", height: 50 }}
-      >
-        0
-      </Button>
       <Button
         variant="outlined"
         onClick={onClear}
@@ -342,6 +336,18 @@ const Users = () => {
                       }}
                     >
                       {user.user_name}
+                    </Typography>
+                    <Typography
+                      variant="h7"
+                      sx={{
+                        fontFamily: "JetBrains Mono",
+                        fontWeight: "bold",
+                        color: "primary.main",
+                      }}
+                    >
+                      {user.user_role === "super_user"
+                        ? "Super User"
+                        : "Sub User"}
                     </Typography>
                   </CardContent>
 

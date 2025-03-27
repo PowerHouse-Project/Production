@@ -93,8 +93,14 @@ const AddUserDialog = ({ open, onClose, onSave }) => {
           type="password"
           fullWidth
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (/^\d{0,4}$/.test(value)) {
+              setPassword(value);
+            }
+          }}
           sx={{ fontFamily: "Jetbrains Mono" }}
+          helperText="Password must be 4 digits long."
         />
 
         {/* Device Selection */}

@@ -177,18 +177,18 @@ const Energy = () => {
           "Dec",
         ].indexOf(selectedToMonth) + 1;
 
-      console.log(
-        "Selected From Month:",
-        selectedFromMonth,
-        "Converted:",
-        fromMonthNumber
-      );
-      console.log(
-        "Selected To Month:",
-        selectedToMonth,
-        "Converted:",
-        toMonthNumber
-      );
+      // console.log(
+      //   "Selected From Month:",
+      //   selectedFromMonth,
+      //   "Converted:",
+      //   fromMonthNumber
+      // );
+      // console.log(
+      //   "Selected To Month:",
+      //   selectedToMonth,
+      //   "Converted:",
+      //   toMonthNumber
+      // );
 
       const deviceIds = selectedDevices
         .map(
@@ -197,16 +197,23 @@ const Energy = () => {
         )
         .filter((id) => id !== null);
 
+      let actualFromDate = parseInt(selectedFromDate, 10);
+      let actualToDate = parseInt(selectedToDate, 10);
+
+      if (actualFromDate > actualToDate) {
+        [actualFromDate, actualToDate] = [actualToDate, actualFromDate];
+      }
+
       const dataToSend = {
         from_month: fromMonthNumber,
         to_month: toMonthNumber,
-        from_date: parseInt(selectedFromDate, 10),
-        to_date: parseInt(selectedToDate, 10),
+        from_date: actualFromDate,
+        to_date: actualToDate,
         device_ids: deviceIds,
         theme: theme.palette.mode,
       };
 
-      console.log("Data being sent to backend:", dataToSend);
+      // console.log("Data being sent to backend:", dataToSend);
 
       const response = await fetch("http://localhost:8000/energy_report/", {
         method: "POST",
@@ -249,7 +256,7 @@ const Energy = () => {
 
   return (
     <div>
-      <Breadcrumb />
+      {/* <Breadcrumb /> */}
       <Box height={30} />
       <Grid container spacing={3}>
         <Grid item xs={12} md={4}>
@@ -475,7 +482,7 @@ const Energy = () => {
                     color: "primary.main",
                   }}
                 >
-                  Generate PDF
+                  Generate Energy Analytics PDF
                 </Typography>
 
                 {/* Generate PDF Button */}

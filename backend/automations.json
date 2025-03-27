@@ -2,17 +2,17 @@
     "automations": [
         {
             "id": 1,
-            "name": "Test",
+            "name": "Test ",
             "device_id": 1,
-            "enabled": true,
-            "triggers": "11:05",
+            "enabled": false,
+            "triggers": "23:55",
             "status": "off"
         },
         {
             "id": 2,
             "name": "Test2",
             "device_id": "2",
-            "enabled": true,
+            "enabled": false,
             "triggers": "8:45",
             "status": "off"
         },
@@ -20,9 +20,49 @@
             "id": 3,
             "name": "Test4",
             "device_id": 1,
-            "triggers": "21:45",
-            "enabled": true,
+            "triggers": "14:45",
+            "enabled": false,
             "status": "off"
+        },
+        {
+            "id": 6,
+            "name": "Switch off",
+            "device_id": 1,
+            "triggers": "16:50",
+            "enabled": false,
+            "status": "on"
+        },
+        {
+            "id": 7,
+            "name": "test",
+            "device_id": 1,
+            "triggers": "17:03",
+            "enabled": false,
+            "status": "on"
+        },
+        {
+            "id": 8,
+            "name": "NEW ",
+            "device_id": 4,
+            "triggers": "19:05",
+            "enabled": false,
+            "status": "on"
+        },
+        {
+            "id": 10,
+            "name": "Music ",
+            "device_id": 6,
+            "triggers": "04:02",
+            "enabled": false,
+            "status": "on"
+        },
+        {
+            "id": 11,
+            "name": "Garden Lights",
+            "device_id": 1,
+            "triggers": "18:02",
+            "enabled": false,
+            "status": "on"
         }
     ]
 }
