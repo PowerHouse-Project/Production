@@ -15,7 +15,7 @@
     "@fontsource/jetbrains-mono": "^5.1.2",
     "@mui/icons-material": "^6.4.1",
     "@mui/lab": "^6.0.0-beta.28",
-    "@mui/material": "^6.4.3",
+    "@mui/material": "^7.0.2",
     "@mui/x-charts": "^7.25.0",
     "@mui/x-date-pickers": "^7.27.1",
     "date-fns": "^4.1.0",
