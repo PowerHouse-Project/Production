@@ -19,7 +19,7 @@
     "@mui/x-charts": "^7.25.0",
     "@mui/x-date-pickers": "^7.27.1",
     "date-fns": "^4.1.0",
-    "dayjs": "^1.11.13",
+    "dayjs": "^1.11.18",
     "framer-motion": "^12.4.1",
     "next": "^15.1.7",
     "react": "^19.0.0",
